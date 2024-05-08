@@ -4,8 +4,7 @@ plugins{
 
 
 android {
-    compileSdkVersion 33
-    buildToolsVersion '33.0.0'
+    compileSdk 33
 
     resourcePrefix "bluetoothkit_"
 
