@@ -1,6 +1,8 @@
 package com.inuker.bluetooth.library.search;
 
 import android.bluetooth.BluetoothDevice;
+import android.bluetooth.le.ScanRecord;
+import android.bluetooth.le.ScanResult;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.text.TextUtils;
@@ -16,6 +18,8 @@ public class SearchResult implements Parcelable {
 
     public byte[] scanRecord;
 
+    public ScanResult result;
+
     public SearchResult(BluetoothDevice device) {
         this(device, 0, null);
     }
@@ -26,6 +30,18 @@ public class SearchResult implements Parcelable {
         this.scanRecord = scanRecord;
     }
 
+    public SearchResult(BluetoothDevice device, ScanResult result) {
+        this.device = device;
+        this.result = result;
+        if (result != null) {
+            this.rssi = result.getRssi();
+            ScanRecord record = result.getScanRecord();
+            if (record != null) {
+                this.scanRecord = record.getBytes();
+            }
+        }
+    }
+
     public String getName() {
         String name = device.getName();
         return TextUtils.isEmpty(name) ? "NULL" : name;
@@ -33,6 +49,10 @@ public class SearchResult implements Parcelable {
 
     public String getAddress() {
         return device != null ? device.getAddress() : "";
+    }
+
+    public ScanResult getResult() {
+        return result;
     }
 
     @Override

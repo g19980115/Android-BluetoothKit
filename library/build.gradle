@@ -28,8 +28,6 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 }
 
-def siteUrl = 'https://github.com/dingjikerbo/BluetoothKit' // 项目的主页
-def gitUrl = 'https://github.com/dingjikerbo/BluetoothKit.git' // Git仓库的url
 group = "com.inuker.bluetooth" // Maven Group ID for the artifact，一般填你唯一的包名
 
 task sourcesJar(type: Jar) {
@@ -50,17 +48,3 @@ artifacts {
 }
 Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
-/*
-bintray {
-    user = properties.getProperty("bintray.user")
-    key = properties.getProperty("bintray.apikey")
-    configurations = ['archives']
-    pkg {
-        repo = "maven"
-        name = "BluetoothKit"    //发布到JCenter上的项目名字
-        websiteUrl = siteUrl
-        vcsUrl = gitUrl
-        licenses = ["Apache-2.0"]
-        publish = true
-    }
-}*/
