@@ -51,7 +51,10 @@ public class BluetoothUtils {
     }
 
     private static void registerGlobalReceiver(BroadcastReceiver receiver, IntentFilter filter) {
-        getContext().registerReceiver(receiver, filter);
+        //getContext().registerReceiver(receiver, filter);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            getContext().registerReceiver(receiver, filter, Context.RECEIVER_EXPORTED);
+        } else getContext().registerReceiver(receiver, filter);
     }
 
     public static void unregisterReceiver(BroadcastReceiver receiver) {

@@ -5,8 +5,8 @@ plugins{
 version="1.4.0"
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion '30.0.2'
+    compileSdkVersion 33
+    buildToolsVersion '33.0.0'
 
     resourcePrefix "bluetoothkit_"
 
