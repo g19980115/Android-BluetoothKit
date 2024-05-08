@@ -1,6 +1,5 @@
 plugins{
     id 'com.android.library'
-    id 'maven-publish'
 }
 
 
@@ -26,6 +25,8 @@ android {
         abortOnError false
     }
 }
+
+
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
